@@ -145,17 +145,16 @@ class Cliente():
         self.__budget = budget
 
     def prenota_torta(self, pasticceria):
+        # Mostra le torte disponibili
+        print("\n📦 Torte attualmente disponibili in pasticceria:")
+        for nome, torta in pasticceria._Pasticceria__inventario.items():
+            print(f"🧁 {torta.nome} ({nome}) - Peso: {torta.peso}kg")
+        if not pasticceria._Pasticceria__inventario:
+            print("🚫 Nessuna torta disponibile in inventario.")
+
         peso = float(input("🔹 Inserisci il peso (in Kg) della torta: "))
         nome_torta = input("🔸 Inserisci il nome della torta: ")
-
-        # Tempo di preparazione simulato (2 secondi)
-        time.sleep(2)
-
-        torta = pasticceria.ordina_torta(peso, nome_torta)
-        if not torta:
-            print("❌ Errore nell'ordinazione della torta.\n")
-            return
-
+        
         prezzo = torta.calcola_prezzo(torta.peso)
         print(f"💰 Prezzo della torta: €{prezzo:.2f}")
 
@@ -165,6 +164,17 @@ class Cliente():
             print(f"🎉 Torta acquistata con successo! Budget residuo: €{self.__budget:.2f}\n")
         else:
             print("❌ Budget insufficiente per completare l'acquisto.\n")
+            return
+            
+        # Tempo di preparazione simulato (2 secondi)
+        time.sleep(2)
+
+        torta = pasticceria.ordina_torta(peso, nome_torta)
+        if not torta:
+            print("❌ Errore nell'ordinazione della torta.\n")
+            return
+
+        
 
 # Funzione principale con menù
 def main():
