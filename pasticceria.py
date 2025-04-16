@@ -102,7 +102,7 @@ class Pasticceria():
             for ingrediente in torta.ingredienti:
                 if ingrediente in self.__ingredienti:
                     self.__ingredienti[ingrediente] -= 1  # Consuma 1 kg o 1 unità di ingrediente
-                    print(f"✔️ Ingrediente {ingrediente} consumato. Quantità rimanente: {self.__ingredienti[ingrediente]}")
+                    print(f"✔️ Ingrediente {ingrediente} consumato.")
 
             self.__inventario[nome] = torta
             print(f"🎂 {torta.nome} da {peso}kg è stata aggiunta all'inventario.")
